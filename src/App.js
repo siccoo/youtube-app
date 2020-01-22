@@ -7,14 +7,23 @@ import youtube from './api/youtube';
 class App extends React.Component {
 
     handleSubmit = async (searchTerm) => {
-        const response = await youtube.get('search', {params: { q: searchTerm }})
+        const response = await youtube.get('search', {
+            params: { 
+                part: 'snippet',
+                maxResult: 3,
+                key: 'AIzaSyDGHw996gMiKDqpPWFOEORpYEodS3ADfSM', 
+                q: searchTerm, 
+                // [API_KEY]
+            }
+        });
+        // console.log(response);   
     } 
 
     render() {
         return (
-            <Grid justify="center" container spacing={16}>
+            <Grid justify="center" container spacing={10}>
                 <Grid items xs={12}>
-                    <Grid container spacing={16}>
+                    <Grid container spacing={10}>
                         <Grid item xs={12}>
                             <SearchBar onFormSubmit={this.handleSubmit} />
                         </Grid>
