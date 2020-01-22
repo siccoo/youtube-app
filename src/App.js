@@ -5,6 +5,11 @@ import { SearchBar, VideoDetail } from './components/';
 import youtube from './api/youtube';
 
 class App extends React.Component {
+
+    handleSubmit = async (searchTerm) => {
+        const response = await youtube.get('search', {params: { q: searchTerm }})
+    } 
+
     render() {
         return (
             <Grid justify="center" container spacing={16}>
